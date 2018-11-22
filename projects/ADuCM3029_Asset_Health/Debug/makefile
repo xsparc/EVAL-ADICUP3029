@@ -44,7 +44,7 @@ all: ADuCM3029_Asset_Health_Core0
 ADuCM3029_Asset_Health_Core0: $(USER_OBJS) $(SRC_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: CrossCore GCC ARM Embedded C Linker'
-	arm-none-eabi-gcc -TD:\Work\GitClones\EVAL-ADICUP3029\projects\ADuCM3029_Asset_Health/RTE/Device/ADuCM3029/ADuCM3029.ld -Wl,--gc-sections -mcpu=cortex-m3 -mthumb -specs=nosys.specs -o  "ADuCM3029_Asset_Health_Core0" @input-file.txt -lm
+	arm-none-eabi-gcc -TC:\Users\Lcompo\Workspace\EVAL-ADICUP3029\projects\ADuCM3029_Asset_Health/RTE/Device/ADuCM3029/ADuCM3029.ld -Wl,--gc-sections -mcpu=cortex-m3 -mthumb -specs=nosys.specs -o  "ADuCM3029_Asset_Health_Core0" @input-file.txt -lm
 	@echo 'Finished building target: $@'
 	@echo ' '
 	$(MAKE) --no-print-directory post-build
@@ -58,7 +58,6 @@ post-build:
 	-arm-none-eabi-objcopy -O ihex ADuCM3029_Asset_Health_Core0 ADuCM3029_Asset_Health_Core0.hex
 	-@echo ' '
 
-.PHONY: all clean dependents
-.SECONDARY: post-build
+.PHONY: all clean dependents post-build
 
 -include ../makefile.targets
